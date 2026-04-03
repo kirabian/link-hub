@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+@theme {
+  --color-brand-black: #080808;
+  --color-brand-cyan: #00FFFF;
+  --color-brand-border: #1F1F1F;
+  --color-brand-grey: #A1A1AA;
+  
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-black text-white selection:bg-brand-cyan/20 selection:text-brand-cyan font-sans antialiased overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .btn-v-grid {
+    @apply relative flex items-center justify-between w-full px-6 py-5 border border-brand-border bg-transparent text-sm font-mono tracking-widest transition-all duration-300 hover:border-brand-cyan hover:text-brand-cyan outline-none active:scale-[0.99];
+  }
+  
+  .btn-v-grid svg {
+    @apply w-4 h-4 transition-transform duration-300;
+  }
+  
+  .btn-v-grid:hover svg {
+    @apply transform translate-x-1;
+  }
+}
+
+/* Tracking/Letter Spacing for Header */
+.v-tracking-wide {
+  letter-spacing: 0.25em;
+}
+
+/* Scanning effect (subtle) for engineering feel */
+.v-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00FFFF, transparent);
+  opacity: 0.1;
+  pointer-events: none;
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  0% { top: -2px; }
+  100% { top: 100%; }
+}
